@@ -1,0 +1,15 @@
+@import '../../theme/variables.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    p{
+        font-weight: 300;
+        margin-top: 5px;
+        font-size: .8em;
+        color: $complementary_dark;
+    }
+}

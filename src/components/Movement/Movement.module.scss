@@ -1,0 +1,45 @@
+@import '../../theme/variables.scss';
+
+.container{
+    animation: init .3s both;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-block: 5%;
+    border-bottom: 1px solid #f3f3f313;
+
+    .avatar{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        h4{
+            margin: 0;
+            font-size: 1em;
+            font-weight: 400;
+            color: $complementary_dark;
+        }
+
+        p{
+            font-size: .8em;
+            opacity: .6;
+            color: $complementary_dark;
+        }
+
+        .info{
+            margin-left: 20px;
+        }
+    }
+}
+
+@keyframes init {
+    0%{
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
