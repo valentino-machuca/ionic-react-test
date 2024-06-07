@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import s from './Home.module.scss';
 
 //ionic components
-import { IonIcon, IonContent, IonPage, useIonActionSheet, IonProgressBar, IonInfiniteScroll } from '@ionic/react';
-import { informationCircleOutline, cardOutline, swapHorizontal, wallet, statsChart, phonePortraitOutline } from 'ionicons/icons'
+import { IonIcon, IonContent, IonPage, useIonActionSheet, IonProgressBar, IonInfiniteScroll, IonNavLink } from '@ionic/react';
+import { informationCircleOutline, cardOutline, swapHorizontal, wallet, statsChart, phonePortraitOutline, notifications } from 'ionicons/icons'
 import { Movement } from '../../components/Movement/Movement';
 import ActionButton from '../../components/ActionButton/ActionButton';
+import Avatar from '../../components/Avatar/Avatar';
+import Profile from '../Profile/Profile';
 
 
 const Home = () => {
@@ -14,13 +16,15 @@ const Home = () => {
 
     const [loading, setLoading] = useState(false);
     const [randomUsers, setRandomUsers] = useState<Array<Object>>([]);
+    const [user, setUser] = useState<Object>({});
 
     useEffect(() => {
         setLoading(true);
         fetch('https://randomuser.me/api/?results=8')
         .then((response) => response.json())
         .then((json) => {
-            setRandomUsers(json.results);
+            setRandomUsers(json.results.slice(1));
+            setUser(json.results[0])
             setLoading(false);
         })
         .catch((e: Error) => {
@@ -54,13 +58,19 @@ const Home = () => {
         <IonInfiniteScroll>
             <div className={s.container}>
                 <div className={s.title}>
-                <h1>Test</h1>
-                <h1 style={{fontWeight: 400}}>Wallet</h1>
+                    <IonNavLink routerDirection="forward" component={() => <Profile user={user}/>}>
+                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                                {loading ? <></> : <Avatar user={user}/>}
+                                <h1>Test</h1>
+                                <h1 style={{fontWeight: 400}}>Wallet</h1>
+                        </div>
+                    </IonNavLink>
+                    <IonIcon icon={notifications} style={{fontSize: '1.5em'}}/>
                 </div>
 
                 <div className={s.balance_section} id="card-balance-info" onClick={handlePresent}>
                     <div className={s.card_visa}>
-                        <p>PISA</p>
+                        <p>Saldo</p>
                         <IonIcon icon={cardOutline} style={{fontSize: '1.5em'}}/>
                     </div>
                     <div className={s.balance}>

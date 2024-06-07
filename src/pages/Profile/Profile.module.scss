@@ -1,0 +1,63 @@
+@import '../../theme/variables.scss';
+
+.container{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    background-color: $primary_dark;
+
+
+    .avatar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 10vh;
+        width: auto;
+        animation: init_avatar .3s .1s both;
+
+        img{
+            animation: init_img .3s .1s both;
+            border-radius: 100%;
+        }
+
+        h2{
+            animation: init .3s .5s both;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 200;
+        }
+    }
+}
+
+@keyframes init_avatar {
+    0%{
+        width: 10%;
+        height: 10%;
+    }
+    100%{
+        width: 100%;
+        height: 30%;
+    }
+}
+
+@keyframes init_img {
+    0%{
+        width: 4em;
+        height: 4em;
+    }
+    100%{
+        width: 10em;
+        height: 10em;
+    }
+}
+
+@keyframes init {
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

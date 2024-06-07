@@ -16,14 +16,22 @@
 
     .title{
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
         margin-top: 3vh;
-        padding-left: 1em;
+        padding-inline: 1.5em;
+        transition: .1s;
 
         h1{
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-weight: 200;
             color: $complementary_dark;
+        }
+
+        &:active{
+            opacity: 0.8;
+            transform: scale(0.98);
         }
     }
 
@@ -34,7 +42,7 @@
         width: 90%;
         height: 15vh;
         padding: 1vh 4vw;
-        margin-top: 3%;
+        margin-top: 3vh;
         border-radius: 8px;
         background-color: $complementary_dark;
         box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);

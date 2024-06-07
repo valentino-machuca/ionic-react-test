@@ -18,7 +18,7 @@ export const Movement: React.FC<{user: any, index: number}> = ({user, index}) =>
             </div>
         </div>
 
-        <p>$ {user.location.street.number.toFixed(2)}</p>
+        <p style={{color: user.location.street.number % 2 === 0 ? '#B33A3A' : ''}}>{`${user.location.street.number % 2 === 0 ? '-' : ''}$ ${user.location.street.number.toFixed(2)}`}</p>
     </div>
   )
 }

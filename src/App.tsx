@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
+import { IonApp, IonIcon, IonLabel, IonNav, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 import { home, qrCode, settings } from 'ionicons/icons';
@@ -44,14 +44,14 @@ const App: React.FC = () => (
     <IonTabs>
       <IonRouterOutlet>
         <Route exact path="/home">
-          <Home />
+          <IonNav root={() => <Home />}></IonNav>
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
       </IonRouterOutlet>
 
-      <IonTabBar slot="bottom">
+      <IonTabBar slot="bottom" className="custom-tab">
         <IonTabButton tab="home" href="/home">
           <IonIcon icon={home} style={{fontSize: '3em', color: '#f2e9e4'}}/>
         </IonTabButton>
