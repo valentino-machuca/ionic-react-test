@@ -1,0 +1,19 @@
+{
+    "home.balance": "Balance",
+    "home.movements": "Movements",
+    "action.transfer": "Transfer",
+    "action.deposit": "Deposit",
+    "action.deposit_balance": "Deposit money",
+    "action.invest": "Invest",
+    "action.charge": "Charge",
+    "action.see_data": "Show data",
+    "action.close": "Close",
+    "profile.profile": "Profile",
+    "profile_actions.settings": "Settings",
+    "profile_actions.profile": "See Profile",
+    "profile_actions.language": "Languague",
+    "profile_actions.logout": "Log Out",
+    "language.chage_language": "Change Language",
+    "language.spanish": "Spanish",
+    "language.english": "English"
+}

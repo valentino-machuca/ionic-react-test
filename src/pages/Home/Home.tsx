@@ -4,11 +4,15 @@ import s from './Home.module.scss';
 //ionic components
 import { IonIcon, IonContent, IonPage, useIonActionSheet, IonProgressBar, IonInfiniteScroll, IonNavLink } from '@ionic/react';
 import { informationCircleOutline, cardOutline, swapHorizontal, wallet, statsChart, phonePortraitOutline, notifications } from 'ionicons/icons'
-import { Movement } from '../../components/Movement/Movement';
+
+//Custom components
+import Movement from '../../components/Movement/Movement';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import Avatar from '../../components/Avatar/Avatar';
 import Profile from '../Profile/Profile';
 
+//i18n
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
     const [present] = useIonActionSheet();
@@ -17,6 +21,9 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [randomUsers, setRandomUsers] = useState<Array<Object>>([]);
     const [user, setUser] = useState<Object>({});
+
+    // Traductor
+    const { t } = useTranslation();
 
     useEffect(() => {
         setLoading(true);
@@ -35,21 +42,21 @@ const Home = () => {
 
     const handlePresent = () => {
         present({
-          header: 'Balance',
+          header: t('home.balance'),
           buttons: [
-            { text: 'Cargar saldo', handler: () => setAction('add_balance') },
-            { text: 'Transferir', handler: () => setAction('transfer') },
-            { text: 'Ver datos', handler: () => setAction('data') },
-            { text: 'Cerrar', role: 'cancel', handler: () => setAction('cancel') },
+            { text: t('action.deposit_balance'), handler: () => setAction('add_balance') },
+            { text: t('action.transfer'), handler: () => setAction('transfer') },
+            { text: t('action.see_data'), handler: () => setAction('data') },
+            { text: t('action.close'), role: 'cancel', handler: () => setAction('cancel') },
           ],
         });
       };
 
     const options = [
-        {label: 'Tranferir', icon: <IonIcon icon={swapHorizontal}/>},
-        {label: 'Ingresar', icon: <IonIcon icon={wallet}/>},
-        {label: 'Invertir', icon: <IonIcon icon={statsChart}/>},
-        {label: 'Recargar', icon: <IonIcon icon={phonePortraitOutline}/>},
+        {label: t('action.transfer'), icon: <IonIcon icon={swapHorizontal}/>},
+        {label: t('action.deposit'), icon: <IonIcon icon={wallet}/>},
+        {label: t('action.invest'), icon: <IonIcon icon={statsChart}/>},
+        {label: t('action.charge'), icon: <IonIcon icon={phonePortraitOutline}/>},
     ];
 
   return (
@@ -65,13 +72,13 @@ const Home = () => {
                                 <h1 style={{fontWeight: 400}}>Wallet</h1>
                         </div>
                     </IonNavLink>
-                    <IonIcon icon={notifications} style={{fontSize: '1.5em'}}/>
+                    <IonIcon icon={notifications} style={{fontSize: '1.3em'}}/>
                 </div>
 
                 <div className={s.balance_section} id="card-balance-info" onClick={handlePresent}>
                     <div className={s.card_visa}>
-                        <p>Saldo</p>
-                        <IonIcon icon={cardOutline} style={{fontSize: '1.5em'}}/>
+                        <p>{t('home.balance')}</p>
+                        <IonIcon icon={cardOutline} style={{fontSize: '1.2em'}}/>
                     </div>
                     <div className={s.balance}>
                         <p>194.004,21</p>
@@ -89,7 +96,7 @@ const Home = () => {
                 </div>
 
                 <div className={s.movements}>
-                    <h2>Movimientos</h2>
+                    <h2>{t("home.movements")}</h2>
                     {
                         loading ?
                         <IonProgressBar type="indeterminate"></IonProgressBar>

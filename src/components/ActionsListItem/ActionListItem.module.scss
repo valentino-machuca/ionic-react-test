@@ -1,0 +1,36 @@
+.container{
+    animation: init .3s .5s both;
+    transition: .3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: .5em;
+    margin-bottom: .5em;
+    border-radius: 8px;
+
+
+    .ion_label{
+        font-size: 1em;
+        font-weight: 200;
+        font-family: 'Poppins', sans-serif;
+        margin-left: .8em;
+    }
+
+    &:active{
+        opacity: .8;
+        scale: .98;
+        background-color: #6a6a6a44;
+    }
+}
+
+@keyframes init {
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

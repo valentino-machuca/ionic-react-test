@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-block: 5%;
+    padding-block: 3%;
     border-bottom: 1px solid #f3f3f313;
     transition: .1s;
 
@@ -17,13 +17,14 @@
 
         h4{
             margin: 0;
-            font-size: 1em;
+            font-size: .8em;
             font-weight: 400;
             color: $complementary_dark;
         }
 
         p{
-            font-size: .8em;
+            font-size: .6em;
+            margin-top: 10px;
             opacity: .6;
             color: $complementary_dark;
         }

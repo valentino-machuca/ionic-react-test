@@ -5,8 +5,8 @@ import { IonAvatar } from '@ionic/react';
 const Avatar: React.FC<{user:any}>= ({user}) => {
   return (
     <div className={s.container}>
-        <IonAvatar>
-            <img src={user?.picture?.thumbnail} alt="avatar_user" />
+        <IonAvatar style={{width: '3em', height:'3em'}}>
+            <img src={user?.picture?.large} alt="avatar_user" />
         </IonAvatar>
     </div>
   )

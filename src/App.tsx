@@ -53,15 +53,17 @@ const App: React.FC = () => (
 
       <IonTabBar slot="bottom" className="custom-tab">
         <IonTabButton tab="home" href="/home">
-          <IonIcon icon={home} style={{fontSize: '3em', color: '#f2e9e4'}}/>
+          <IonIcon icon={home} style={{fontSize: '2em', color: '#f2e9e4'}}/>
+          <p style={{fontSize: '.8em', marginTop: '5px', color: '#f2e9e4'}}>Inicio</p>
         </IonTabButton>
 
         <IonTabButton tab="qr" href="/qr">
-          <IonIcon icon={qrCode} style={{fontSize: '3em', color: '#f2e9e4'}}/>
+          <IonIcon icon={qrCode} style={{fontSize: '2em', color: '#f2e9e4'}}/>
         </IonTabButton>
 
         <IonTabButton tab="settings" href="/settings">
-        <IonIcon icon={settings} style={{fontSize: '3em', color: '#f2e9e4'}}/>
+          <IonIcon icon={settings} style={{fontSize: '2em', color: '#f2e9e4'}}/>
+          <p style={{fontSize: '.8em', marginTop: '5px', color: '#f2e9e4'}}>Configuración</p>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

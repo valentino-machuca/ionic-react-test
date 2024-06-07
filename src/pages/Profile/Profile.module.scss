@@ -2,8 +2,11 @@
 
 .container{
     width: 100%;
-    height: 90vh;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     background-color: $primary_dark;
 
 
@@ -13,6 +16,7 @@
         align-items: center;
         flex-direction: column;
         height: 10vh;
+        margin-block: 5%;
         width: auto;
         animation: init_avatar .3s .1s both;
 
@@ -24,8 +28,17 @@
         h2{
             animation: init .3s .5s both;
             font-family: 'Poppins', sans-serif;
-            font-weight: 200;
+            font-weight: 300;
         }
+    }
+
+    .options{
+        width: 100%;
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -46,8 +59,8 @@
         height: 4em;
     }
     100%{
-        width: 10em;
-        height: 10em;
+        width: 8em;
+        height: 8em;
     }
 }
 
