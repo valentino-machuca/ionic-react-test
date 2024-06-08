@@ -35,40 +35,46 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.scss';
 
 import Home from './pages/Home/Home';
+import { useTranslation } from 'react-i18next';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-    <IonTabs>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <IonNav root={() => <Home />}></IonNav>
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
+const App: React.FC = () => {
 
-      <IonTabBar slot="bottom" className="custom-tab">
-        <IonTabButton tab="home" href="/home">
-          <IonIcon icon={home} style={{fontSize: '2em', color: '#f2e9e4'}}/>
-          <p style={{fontSize: '.8em', marginTop: '5px', color: '#f2e9e4'}}>Inicio</p>
-        </IonTabButton>
+  const { t } = useTranslation();
+  
+  return(
+    <IonApp>
+      <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/home">
+            <IonNav root={() => <Home />}></IonNav>
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+        </IonRouterOutlet>
 
-        <IonTabButton tab="qr" href="/qr">
-          <IonIcon icon={qrCode} style={{fontSize: '2em', color: '#f2e9e4'}}/>
-        </IonTabButton>
+        <IonTabBar slot="bottom" color='dark'>
+          <IonTabButton tab="home" href="/home">
+            <IonIcon icon={home} style={{fontSize: '2em'}}/>
+            <IonLabel><p style={{fontSize: '.8em', marginTop: '5px'}}>{t('toolbar.home')}</p></IonLabel>
+          </IonTabButton>
 
-        <IonTabButton tab="settings" href="/settings">
-          <IonIcon icon={settings} style={{fontSize: '2em', color: '#f2e9e4'}}/>
-          <p style={{fontSize: '.8em', marginTop: '5px', color: '#f2e9e4'}}>Configuración</p>
-        </IonTabButton>
-      </IonTabBar>
-    </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+          <IonTabButton tab="qr" href="/qr">
+            <IonIcon icon={qrCode} style={{fontSize: '2em'}}/>
+          </IonTabButton>
+
+          <IonTabButton tab="settings" href="/settings">
+            <IonIcon icon={settings} style={{fontSize: '2em'}}/>
+            <IonLabel><p style={{fontSize: '.8em', marginTop: '5px'}}>{t('toolbar.settings')}</p></IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+}
 
 export default App;

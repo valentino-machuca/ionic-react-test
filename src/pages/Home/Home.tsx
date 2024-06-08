@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import s from './Home.module.scss';
 
 //ionic components
-import { IonIcon, IonContent, IonPage, useIonActionSheet, IonProgressBar, IonInfiniteScroll, IonNavLink } from '@ionic/react';
-import { informationCircleOutline, cardOutline, swapHorizontal, wallet, statsChart, phonePortraitOutline, notifications } from 'ionicons/icons'
+import { IonIcon, IonContent, IonPage, useIonActionSheet, IonProgressBar, IonInfiniteScroll, IonNavLink, IonLabel, IonItemDivider } from '@ionic/react';
+import { informationCircleOutline, cardOutline, swapHorizontal, statsChart, phonePortraitOutline, notifications, walletOutline, discOutline, flame } from 'ionicons/icons'
 
 //Custom components
 import Movement from '../../components/Movement/Movement';
@@ -13,6 +13,7 @@ import Profile from '../Profile/Profile';
 
 //i18n
 import { useTranslation } from 'react-i18next';
+import AdCard from '../../components/AdCard/AdCard';
 
 const Home = () => {
     const [present] = useIonActionSheet();
@@ -20,7 +21,7 @@ const Home = () => {
 
     const [loading, setLoading] = useState(false);
     const [randomUsers, setRandomUsers] = useState<Array<Object>>([]);
-    const [user, setUser] = useState<Object>({});
+    const [user, setUser] = useState<any>({});
 
     // Traductor
     const { t } = useTranslation();
@@ -54,46 +55,48 @@ const Home = () => {
 
     const options = [
         {label: t('action.transfer'), icon: <IonIcon icon={swapHorizontal}/>},
-        {label: t('action.deposit'), icon: <IonIcon icon={wallet}/>},
+        {label: t('action.deposit'), icon: <IonIcon icon={walletOutline}/>},
         {label: t('action.invest'), icon: <IonIcon icon={statsChart}/>},
         {label: t('action.charge'), icon: <IonIcon icon={phonePortraitOutline}/>},
     ];
 
   return (
     <IonPage>
-        <IonContent>
+        <IonContent color='dark'>
         <IonInfiniteScroll>
             <div className={s.container}>
                 <div className={s.title}>
                     <IonNavLink routerDirection="forward" component={() => <Profile user={user}/>}>
                         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                                {loading ? <></> : <Avatar user={user}/>}
-                                <h1>Test</h1>
-                                <h1 style={{fontWeight: 400}}>Wallet</h1>
+                            {loading ? <></> : <Avatar user={user}/>}
+                            <h1>{`${t('title.welcome')} `}</h1>
+                            <h1 style={{fontWeight: 400, marginLeft: '10px'}}>{user?.name?.first}!</h1>
                         </div>
                     </IonNavLink>
                     <IonIcon icon={notifications} style={{fontSize: '1.3em'}}/>
                 </div>
 
-                <div className={s.balance_section} id="card-balance-info" onClick={handlePresent}>
+                <IonItemDivider className={s.balance_section} id="card-balance-info" onClick={handlePresent}>
                     <div className={s.card_visa}>
-                        <p>{t('home.balance')}</p>
+                        <IonLabel>{t('home.balance')}</IonLabel>
                         <IonIcon icon={cardOutline} style={{fontSize: '1.2em'}}/>
                     </div>
                     <div className={s.balance}>
-                        <p>194.004,21</p>
+                        <IonLabel>194.004,21</IonLabel>
                     </div>
                     <div className={s.card_info}>
-                        <p>**** 4125</p>
+                        <IonLabel>**** 4125</IonLabel>
                         <IonIcon icon={informationCircleOutline} style={{fontSize: '1.3em'}}/>
                     </div>
-                </div>
+                </IonItemDivider>
 
                 <div className={s.options}>
                     {
                         options.map((item, index) => <ActionButton item={item} key={index}/>)
-                    }
+                        }
                 </div>
+
+                <AdCard icon={flame} title={t('ad.title')} subtitle={t('ad.text')}/>
 
                 <div className={s.movements}>
                     <h2>{t("home.movements")}</h2>

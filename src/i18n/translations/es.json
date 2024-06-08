@@ -1,4 +1,9 @@
 {
+    "title.welcome": "Bienvenido/a, ",
+    "toolbar.home": "Inicio",
+    "toolbar.settings": "Configuración",
+    "ad.title": "10% OFF en YPF",
+    "ad.text": "Ahorrá hasta $2000 todos los sábados",
     "home.balance": "Saldo",
     "home.movements": "Movimientos",
     "action.transfer": "Transferir",

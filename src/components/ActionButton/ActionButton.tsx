@@ -7,7 +7,7 @@ import { IonButton } from '@ionic/react';
 const ActionButton: React.FC<{item: {icon: any, label: string}}> = ({item}) => {
   return (
     <div className={s.container}>
-        <IonButton color='dark'>
+        <IonButton color='light'>
             {item?.icon}
         </IonButton>
         <p>{item.label}</p>

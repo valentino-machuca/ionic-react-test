@@ -1,0 +1,27 @@
+.container{
+    width: 85%;
+    height: 10vh;
+    border-radius: 8px;
+    margin-top: 8%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+
+    .main_logo{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text{
+        padding: 1em;
+    }
+
+    &:active{
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+}

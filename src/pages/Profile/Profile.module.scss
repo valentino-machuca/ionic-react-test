@@ -7,18 +7,14 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: $primary_dark;
-
 
     .avatar{
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        height: 10vh;
         margin-block: 5%;
-        width: auto;
         animation: init_avatar .3s .1s both;
+        border-bottom: 1px solid;
 
         img{
             animation: init_img .3s .1s both;
@@ -28,13 +24,23 @@
         h2{
             animation: init .3s .5s both;
             font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        p{
+            animation: init .3s .8s both;
+            font-family: 'Poppins', sans-serif;
+            font-size: .9em;
             font-weight: 300;
+            margin: 10px 0 0 0;
         }
     }
 
     .options{
         width: 100%;
         height: 20vh;
+        margin-top: 10%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -48,19 +54,19 @@
         height: 10%;
     }
     100%{
-        width: 100%;
-        height: 30%;
+        width: 90%;
+        height: 25%;
     }
 }
 
 @keyframes init_img {
     0%{
-        width: 4em;
-        height: 4em;
+        width: 2em;
+        height: 2em;
     }
     100%{
-        width: 8em;
-        height: 8em;
+        width: 5em;
+        height: 5em;
     }
 }
 

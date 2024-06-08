@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $primary_dark;
     font-family: 'Poppins', sans-serif !important;
 
     .title{
@@ -24,9 +23,8 @@
         transition: .1s;
 
         h1{
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: 200;
-            color: $complementary_dark;
         }
 
         &:active{
@@ -40,13 +38,10 @@
         flex-direction: column;
         align-items: flex-end;
         width: 90%;
-        height: 12vh;
-        padding: 1vh 4vw;
+        padding: 2vh 4vw;
         margin-top: 1.5vh;
         border-radius: 8px;
-        background-color: $complementary_dark;
         box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-        color: $primary_dark;
         transition: .1s;
 
         .card_visa{
@@ -56,11 +51,11 @@
             width: 100%;
             font-weight: 600;
             font-size: .8em;
-            opacity: .5;
+            opacity: .8;
         }
 
         .balance, .card_info{
-            margin-top: 2%;
+            margin-top: 4%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -68,16 +63,14 @@
         }
 
         .balance{
-            p{
-                font-size: 1.5em;
-                font-weight: 500;
-                letter-spacing: 1px;
+            font-size: 1.8em;
+            font-weight: 500;
+            letter-spacing: 2px;
 
-                &::before{
-                    content: '$ ';
-                    font-size: .5em;
-                    opacity: .8;
-                }
+            &::before{
+                content: '$ ';
+                font-size: .5em;
+                opacity: .8;
             }
         }
 
@@ -98,14 +91,13 @@
     .movements{
         margin-top: 6%;
         padding-top: 2%;
-        border-top: 1px solid $complementary_dark;
+        border-top: 1px solid;
         width: 85%;
 
         h2{
             font-size: 1.2em;
             font-weight: 300;
             margin-bottom: 5%;
-            color: $complementary_dark;
         }
     }
 }

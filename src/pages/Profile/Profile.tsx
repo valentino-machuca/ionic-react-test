@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.scss';
 
 //Ionic
-import { IonBackButton, IonButtons, IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonIcon, useIonActionSheet } from '@ionic/react'
+import { IonBackButton, IonButtons, IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonIcon, useIonActionSheet, IonLabel } from '@ionic/react'
 import { languageOutline, logOutOutline, personOutline, settings, settingsOutline } from 'ionicons/icons';
 
 //custom components
@@ -38,18 +38,23 @@ const Profile: React.FC<{ user: any }> = ({user}) => {
   return (
     <>
         <IonHeader>
-        <IonToolbar>
+        <IonToolbar color='dark'>
             <IonButtons slot="start">
             <IonBackButton></IonBackButton>
             </IonButtons>
             <IonTitle>{t('profile.profile')}</IonTitle>
         </IonToolbar>
         </IonHeader>
-        <IonContent>
+        <IonContent color='dark'>
             <div className={s.container}>
                 <div className={s.avatar}>
                     <img src={user?.picture?.large} alt="profile_pic" />
-                    <h2>{`${user.name.first} ${user.name.last}`}</h2>
+                    <div style={{marginLeft: '5%'}}>
+                        <IonLabel>
+                            <h2>{`${user.name.first} ${user.name.last}`}</h2>
+                            <p>{user.email}</p>
+                        </IonLabel>
+                    </div>
                 </div>
 
                 <div className={s.options}>
