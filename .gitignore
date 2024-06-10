@@ -34,3 +34,6 @@ yarn-error.log*
 /client/node_modules
 /client/android
 /client/dist
+/api/.env
+/api/node_modules
+/api/package-lock.json
