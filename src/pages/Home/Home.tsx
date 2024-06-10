@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import s from './Home.module.scss';
 
 //ionic components
@@ -10,10 +10,13 @@ import Movement from '../../components/Movement/Movement';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import Avatar from '../../components/Avatar/Avatar';
 import Profile from '../Profile/Profile';
+import AdCard from '../../components/AdCard/AdCard';
 
 //i18n
 import { useTranslation } from 'react-i18next';
-import AdCard from '../../components/AdCard/AdCard';
+
+//Temas
+import { ThemeContext } from '../../theme/ThemeContext';
 
 const Home = () => {
     const [present] = useIonActionSheet();
@@ -25,6 +28,8 @@ const Home = () => {
 
     // Traductor
     const { t } = useTranslation();
+
+    const theme: {theme: string, toggleTheme: Function} = useContext(ThemeContext);
 
     useEffect(() => {
         setLoading(true);
@@ -62,11 +67,11 @@ const Home = () => {
 
   return (
     <IonPage>
-        <IonContent color='dark'>
+        <IonContent color={theme.theme}>
         <IonInfiniteScroll>
             <div className={s.container}>
                 <div className={s.title}>
-                    <IonNavLink routerDirection="forward" component={() => <Profile user={user}/>}>
+                    <IonNavLink routerDirection="forward" component={() => <Profile user={user} theme={theme}/>}>
                         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                             {loading ? <></> : <Avatar user={user}/>}
                             <h1>{`${t('title.welcome')} `}</h1>
@@ -76,33 +81,33 @@ const Home = () => {
                     <IonIcon icon={notifications} style={{fontSize: '1.3em'}}/>
                 </div>
 
-                <IonItemDivider className={s.balance_section} id="card-balance-info" onClick={handlePresent}>
+                <IonItemDivider className={s.balance_section} id="card-balance-info" onClick={handlePresent} color={theme.theme === "light" ? 'dark' : "light"}>
                     <div className={s.card_visa}>
-                        <IonLabel>{t('home.balance')}</IonLabel>
-                        <IonIcon icon={cardOutline} style={{fontSize: '1.2em'}}/>
+                        <IonLabel color={theme.theme}>{t('home.balance')}</IonLabel>
+                        <IonIcon icon={cardOutline} style={{fontSize: '1.2em'}} color={theme.theme}/>
                     </div>
                     <div className={s.balance}>
-                        <IonLabel>194.004,21</IonLabel>
+                        <IonLabel color={theme.theme}>194.004,21</IonLabel>
                     </div>
                     <div className={s.card_info}>
-                        <IonLabel>**** 4125</IonLabel>
-                        <IonIcon icon={informationCircleOutline} style={{fontSize: '1.3em'}}/>
+                        <IonLabel color={theme.theme}>**** 4125</IonLabel>
+                        <IonIcon icon={informationCircleOutline} style={{fontSize: '1.3em'}} color={theme.theme}/>
                     </div>
                 </IonItemDivider>
 
                 <div className={s.options}>
                     {
                         options.map((item, index) => <ActionButton item={item} key={index}/>)
-                        }
+                    }
                 </div>
 
-                <AdCard icon={flame} title={t('ad.title')} subtitle={t('ad.text')}/>
+                <AdCard icon={flame} title={t('ad.title')} subtitle={t('ad.text')} theme={theme.theme}/>
 
                 <div className={s.movements}>
                     <h2>{t("home.movements")}</h2>
                     {
                         loading ?
-                        <IonProgressBar type="indeterminate"></IonProgressBar>
+                        <IonProgressBar type="indeterminate" color={theme.theme === "light" ? 'dark' : "light"}></IonProgressBar>
                         : randomUsers.length ? randomUsers.map((user, index) => <Movement user={user} index={index} key={index}/>) : <p>Sin movimientos...</p>
                     }
                 </div>

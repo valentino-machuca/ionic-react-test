@@ -37,11 +37,18 @@ import './theme/variables.scss';
 import Home from './pages/Home/Home';
 import { useTranslation } from 'react-i18next';
 
+import { useContext } from 'react';
+
+//Temas
+import { ThemeContext } from './theme/ThemeContext';
+
 setupIonicReact();
 
 const App: React.FC = () => {
 
   const { t } = useTranslation();
+
+  const theme: {theme: string, toggleTheme: Function} = useContext(ThemeContext);
   
   return(
     <IonApp>
@@ -56,7 +63,7 @@ const App: React.FC = () => {
           </Route>
         </IonRouterOutlet>
 
-        <IonTabBar slot="bottom" color='dark'>
+        <IonTabBar slot="bottom" color={theme.theme}>
           <IonTabButton tab="home" href="/home">
             <IonIcon icon={home} style={{fontSize: '2em'}}/>
             <IonLabel><p style={{fontSize: '.8em', marginTop: '5px'}}>{t('toolbar.home')}</p></IonLabel>

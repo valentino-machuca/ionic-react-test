@@ -14,10 +14,11 @@
     "action.see_data": "Ver Datos",
     "action.close": "Cerrar",
     "profile.profile": "Perfil",
-    "profile_actions.settings": "Configuración",
+    "profile_actions.theme_dark": "Activar Modo oscuro",
+    "profile_actions.theme_light": "Activar Modo claro",
     "profile_actions.profile": "Ver Perfil",
     "profile_actions.language": "Idioma",
-    "profile_actions.logout": "Cerrar sesión",
+    "profile_actions.logout": "Cerrar Sesión",
     "language.chage_language": "Cambiar Idioma",
     "language.spanish": "Español",
     "language.english": "Inglés"
