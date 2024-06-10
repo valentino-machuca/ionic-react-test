@@ -30,3 +30,7 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+/client/node_modules
+/client/android
+/client/dist
