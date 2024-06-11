@@ -10,8 +10,9 @@ import ActionListItem from '../../components/ActionsListItem/ActionListItem';
 
 //i18n
 import { useTranslation } from 'react-i18next';
+import User from '../../models/user';
 
-const Profile: React.FC<{ user: any, theme: {theme: string, toggleTheme: Function} }> = ({user, theme}) => {
+const Profile: React.FC<{ user: User, theme: {theme: string, toggleTheme: Function} }> = ({user, theme}) => {
     const [present] = useIonActionSheet();
 
     // Traductor
@@ -48,10 +49,10 @@ const Profile: React.FC<{ user: any, theme: {theme: string, toggleTheme: Functio
         <IonContent color={theme.theme}>
             <div className={s.container}>
                 <div className={s.avatar}>
-                    <img src={user?.picture?.large} alt="profile_pic" />
+                    <img src={user?.avatar} alt="profile_pic" />
                     <div style={{marginLeft: '5%'}}>
                         <IonLabel>
-                            <h2>{`${user.name.first} ${user.name.last}`}</h2>
+                            <h2>{`${user.name} ${user.lastname}`}</h2>
                             <p>{user.email}</p>
                         </IonLabel>
                     </div>

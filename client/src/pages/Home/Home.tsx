@@ -5,6 +5,9 @@ import s from './Home.module.scss';
 import { IonIcon, IonContent, IonPage, useIonActionSheet, IonProgressBar, IonInfiniteScroll, IonNavLink, IonLabel, IonItemDivider } from '@ionic/react';
 import { informationCircleOutline, cardOutline, swapHorizontal, statsChart, phonePortraitOutline, notifications, walletOutline, discOutline, flame } from 'ionicons/icons'
 
+//Service
+import { getUserById } from '../../service/users/users';
+
 //Custom components
 import Movement from '../../components/Movement/Movement';
 import ActionButton from '../../components/ActionButton/ActionButton';
@@ -17,13 +20,14 @@ import { useTranslation } from 'react-i18next';
 
 //Temas
 import { ThemeContext } from '../../theme/ThemeContext';
+import { getMovementsByUser } from '../../service/movimientos/movements';
 
 const Home = () => {
     const [present] = useIonActionSheet();
     const [action, setAction] = useState<string>('');
 
     const [loading, setLoading] = useState(false);
-    const [randomUsers, setRandomUsers] = useState<Array<Object>>([]);
+    const [movements, setMovements] = useState<Array<typeof Movement>>([]);
     const [user, setUser] = useState<any>({});
 
     // Traductor
@@ -31,19 +35,24 @@ const Home = () => {
 
     const theme: {theme: string, toggleTheme: Function} = useContext(ThemeContext);
 
-    useEffect(() => {
+    const getData = () => {
         setLoading(true);
-        fetch('https://randomuser.me/api/?results=8')
-        .then((response) => response.json())
-        .then((json) => {
-            setRandomUsers(json.results.slice(1));
-            setUser(json.results[0])
+        getUserById(1)
+        .then(res => {
+            setUser(res);
+        })
+        .catch(e => console.log(e))
+
+        getMovementsByUser(1)
+        .then(res => {
+            setMovements(res);
             setLoading(false);
         })
-        .catch((e: Error) => {
-            console.log(e);
-            setLoading(false);
-        })
+        .catch(e => console.log(e))
+    }
+
+    useEffect(() => {
+        getData();
     }, [])
 
     const handlePresent = () => {
@@ -74,8 +83,8 @@ const Home = () => {
                     <IonNavLink routerDirection="forward" component={() => <Profile user={user} theme={theme}/>}>
                         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                             {loading ? <></> : <Avatar user={user}/>}
-                            <h1>{`${t('title.welcome')} `}</h1>
-                            <h1 style={{fontWeight: 400, marginLeft: '10px'}}>{user?.name?.first}!</h1>
+                            <h1>{`${t('title.welcome')}`}</h1>
+                            <h1 style={{fontWeight: 400, marginLeft: '5px'}}>{user?.name}!</h1>
                         </div>
                     </IonNavLink>
                     <IonIcon icon={notifications} style={{fontSize: '1.3em'}}/>
@@ -87,7 +96,7 @@ const Home = () => {
                         <IonIcon icon={cardOutline} style={{fontSize: '1.2em'}} color={theme.theme}/>
                     </div>
                     <div className={s.balance}>
-                        <IonLabel color={theme.theme}>194.004,21</IonLabel>
+                        <IonLabel color={theme.theme}>104.474,21</IonLabel>
                     </div>
                     <div className={s.card_info}>
                         <IonLabel color={theme.theme}>**** 4125</IonLabel>
@@ -108,7 +117,7 @@ const Home = () => {
                     {
                         loading ?
                         <IonProgressBar type="indeterminate" color={theme.theme === "light" ? 'dark' : "light"}></IonProgressBar>
-                        : randomUsers.length ? randomUsers.map((user, index) => <Movement user={user} index={index} key={index}/>) : <p>Sin movimientos...</p>
+                        : movements.length ? movements.map((item, index) => <Movement movement={item} index={index} key={index}/>) : <p>Sin movimientos...</p>
                     }
                 </div>
             </div>

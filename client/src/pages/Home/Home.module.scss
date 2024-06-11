@@ -64,8 +64,9 @@
 
         .balance{
             font-size: 1.8em;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 2px;
+            width: 70%;
 
             &::before{
                 content: '$ ';

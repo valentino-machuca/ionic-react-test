@@ -10,8 +10,8 @@ const AdCard: React.FC<{icon: any, title: string, subtitle: string, theme: strin
             <IonIcon icon={icon} style={{width: '4em', height: '4em'}}/>
         </div>
         <div className={s.text}>
-            <IonLabel color={theme}>{title}</IonLabel>
-            <IonLabel color={theme} style={{fontSize: '.8em', marginTop: '5px', fontWeight: '200'}}>{subtitle}</IonLabel>
+            <IonLabel color={theme} style={{fontSize: '.9em'}}>{title}</IonLabel>
+            <IonLabel color={theme} style={{fontSize: '.7em', marginTop: '5px', fontWeight: '200'}}>{subtitle}</IonLabel>
         </div>
     </IonItemDivider>
   )

@@ -1,24 +1,38 @@
 import React from 'react';
 import s from './Movement.module.scss';
+
+//Ionic
 import { IonAvatar } from '@ionic/react';
 
-const Movement: React.FC<{user: any, index: number}> = ({user, index}) => {
+//Modelos
+import User from '../../models/user';
 
-    let username:String = `${user.name.first} ${user.name.last}`
+const Movement: React.FC<{movement: any, index: number}> = ({movement, index}) => {
+    let user: User;
+    let date : string = new Date(movement.date).toLocaleString('es-AR', {
+        timeZone: 'America/Argentina/Buenos_Aires',
+        year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true // Para formato de 24 horas
+    })
+
+    if(movement.Receiver.id === 1){
+        user = movement.Sender;
+    }else{
+        user = movement.Receiver;
+    }
 
   return (
     <div className={s.container}>
         <div className={s.avatar}>
             <IonAvatar style={{width: '3em', height:'3em'}}>
-                <img src={user.picture.large} alt={user.email} />
+                <img src={user.avatar} alt={user.email} />
             </IonAvatar>
             <div className={s.info}>
-                <h4>{username}</h4>
-                <p>{user.registered.date.split('T')[0].split('-').reverse().join('-')}</p>
+                <h4>{`${user.name} ${user.lastname}`}</h4>
+                <p>{date}</p>
             </div>
         </div>
 
-        <p style={{color: user.location.street.number % 2 === 0 ? '#B33A3A' : ''}}>{`${user.location.street.number % 2 === 0 ? '-' : ''}$ ${user.location.street.number.toFixed(2)}`}</p>
+        <p style={{color: movement.Sender.id === 1 ? '#B33A3A' : ''}}>{`${movement.Sender.id === 1 ? '- ' : '+ '}$ ${movement.monto.toFixed(2)}`}</p>
     </div>
   )
 };
