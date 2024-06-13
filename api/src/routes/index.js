@@ -1,6 +1,6 @@
-const express  = require('express');
-const movementsRouter = require('./routers/movements/movements');
-const userRouter = require('./routers/users/users');
+import express from 'express';
+import movementsRouter from './routers/movements/movements.js';
+import userRouter from './routers/users/users.js';
 
 const router = express.Router();
 
@@ -16,4 +16,4 @@ router.get('/', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

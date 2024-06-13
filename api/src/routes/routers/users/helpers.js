@@ -1,4 +1,4 @@
-const { User } = require('../../../db');
+import { User } from '../../../db.js';
 
 const getUserByPk = async (user_id) => { // Obtener usuario por id
     
@@ -20,4 +20,4 @@ const getAllUsers = async () => { // Obtener usuarios
     }
 }
 
-module.exports = { getUserByPk, getAllUsers };
+export { getUserByPk, getAllUsers };

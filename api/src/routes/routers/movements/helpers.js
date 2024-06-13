@@ -1,5 +1,5 @@
-const { Movement, User } = require('../../../db');
-const { Op } = require('sequelize');
+import { Movement, User } from '../../../db.js';
+import { Op } from 'sequelize';
 
 const getMovementsByUserId = async (user_id) => { // Obtener movimientos en los que participa un usuario.
     try {
@@ -33,4 +33,4 @@ const getMovementsByUserId = async (user_id) => { // Obtener movimientos en los 
     }
 }
 
-module.exports = { getMovementsByUserId }
+export { getMovementsByUserId };

@@ -1,5 +1,5 @@
-const express = require('express');
-const { getMovementsByUserId } = require('./helpers');
+import express from 'express';
+import { getMovementsByUserId } from './helpers.js';
 
 const movements = express.Router();
 
@@ -19,4 +19,4 @@ movements.get('/:user_id', async (req, res) => { // Obtener movimientos en los q
     }
 });
 
-module.exports = movements;
+export default movements;
